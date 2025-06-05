@@ -13,10 +13,21 @@
  * @param {string} args.meta_data - Meta data.
  * @returns {Promise<Object>} - The result of the customer update.
  */
-const executeFunction = async ({ id, email, first_name, last_name, username, password, billing, shipping, meta_data }) => {
-  const baseUrl = 'https://woo-quickly-successful-alpaca.wpcomstaging.com/wp-json';
-  const clientKey = ''; // will be provided by the user
-  const clientSecret = ''; // will be provided by the user
+const executeFunction = async ({
+  id,
+  email,
+  first_name,
+  last_name,
+  username,
+  password,
+  billing,
+  shipping,
+  meta_data
+}) => {
+  // ✅ Use environment variables for security
+  const baseUrl = process.env.WOOCOMMERCE_API_BASE_URL || 'https://www.12taste.com';
+  const clientKey = process.env.WOOCOMMERCE_API_KEY || '';
+  const clientSecret = process.env.WOOCOMMERCE_API_SECRET || '';
 
   try {
     // Construct the URL with the customer ID and query parameters

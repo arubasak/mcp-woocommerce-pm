@@ -6,9 +6,11 @@
  * @returns {Promise<Object>} - The result of the order retrieval.
  */
 const executeFunction = async ({ id }) => {
-  const baseUrl = 'https://woo-quickly-successful-alpaca.wpcomstaging.com/wp-json';
-  const username = ''; // will be provided by the user
-  const password = ''; // will be provided by the user
+  // ✅ Use environment variables
+  const baseUrl = process.env.WOOCOMMERCE_API_BASE_URL || 'https://www.12taste.com';
+  const username = process.env.WOOCOMMERCE_API_KEY || ''; // WooCommerce API Key
+  const password = process.env.WOOCOMMERCE_API_SECRET || ''; // WooCommerce API Secret
+
   try {
     // Construct the URL with the order ID
     const url = new URL(`${baseUrl}/wc/v3/orders/${id}`);
